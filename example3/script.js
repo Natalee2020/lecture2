@@ -28,17 +28,22 @@ function init() {
     const controls = new OrbitControls( camera, renderer.domElement )
 
     const directionalLight = new THREE.DirectionalLight( 0xffffff )
-    directionalLight.position.set( 0, 0, 2 )
+    directionalLight.position.set( 0, -50, 50 )
     directionalLight.castShadow = true
-    directionalLight.intensity = 2
+    directionalLight.intensity = 1
     scene.add( directionalLight )
+
+    //const helper = new THREE.DirectionalLightHelper(directionalLight);
+    //scene.add(helper);
+    const ambientLight = new THREE.AmbientLight(0xffffff, .1);
+    scene.add(ambientLight);
 
     raycaster = new THREE.Raycaster()
 
     const loader = new Rhino3dmLoader()
     loader.setLibraryPath( 'https://cdn.jsdelivr.net/npm/rhino3dm@0.13.0/' )
 
-    loader.load( 'sphere.3dm', function ( object ) {
+    loader.load( 'model.3dm', function ( object ) {
 
         document.getElementById('loader').remove()
         scene.add( object )
@@ -68,9 +73,9 @@ function onClick( event ) {
 
     // reset object colours
     scene.traverse((child, i) => {
-        if (child.isMesh) {
-            child.material.color.set( 'white' )
-        }
+       // if (child.isMesh) {
+        //    child.material.color.set( 'white' )
+        //}
     });
 
     if (intersects.length > 0) {
@@ -79,7 +84,7 @@ function onClick( event ) {
         const object = intersects[0].object
         console.log(object) // debug
 
-        object.material.color.set( 'yellow' )
+       // object.material.color.set( 'yellow' )
 
         // get user strings
         let data, count

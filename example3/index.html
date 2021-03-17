@@ -43,11 +43,45 @@
                 padding: 10px;
             }
             table td:first-child { border-left: none; }
-
+#info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 150px;
+    z-index: 100;
+    color: aliceblue;
+    font-size: 20px;
+}
+#legend {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: 150px;
+    z-index: 100;
+    color: aliceblue;
+    font-size: 16px;
+    padding-right: 16px;
+}
+#legend p {
+    margin: 0;
+}
+#legend span {
+    color: aqua;
+}
 		</style>
 	</head>
 	<body>
 		<div id="loader"></div>
+        <div id="info">
+            <p>Group 2</p>
+            <p>Solar & Water Plant</p>
+        </div>
+        <div id="legend">
+            <p><span>click</span>- information</p>
+            <p><span>doubleclick</span> - transparency switch on/off</p>
+        </div>
         <script type="module" src="./script2.js"></script>
 	</body>
 </html>
